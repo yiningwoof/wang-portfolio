@@ -15,12 +15,14 @@ function App() {
   return (
     <>
       <Nav opaque={true} />
-      <TechProjects />
+      {/* <TechProjects /> */}
       <Switch>
         <Route exact path="/">
           {/* <Home /> */}
         </Route>
-        <Route path="/tech_projects">{/* <Projects /> */}</Route>
+        <Route path="/tech_projects">
+          <TechProjects />
+        </Route>
         <Route path="/resume">{/* <Resume /> */}</Route>
         <Route path="/photography">{/* <Photography /> */}</Route>
       </Switch>
