@@ -1,37 +1,40 @@
-import React, { useEffect } from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
-import { TechProjects } from './components/TechProjects/TechProjects';
-import { Home } from './components/Home/Home';
-import { Resume } from './components/Resume/Resume';
+import React, { useEffect, useState } from "react";
+import { Switch, Route, withRouter } from "react-router-dom";
+import { TechProjects } from "./components/TechProjects/TechProjects";
+import { Home } from "./components/Home/Home";
+import { Resume } from "./components/Resume/Resume";
 
-import './App.css';
+import "./App.css";
 
-import { Nav } from './components/Nav/Nav';
+import { Nav } from "./components/Nav/Nav";
 // import { Home } from './components/Home/Home';
 
 function App() {
-	useEffect(() => {});
+  const [home, setHome] = useState(true);
+  //   console.log(window.location.pathname);
+  useEffect(() => {
+    window.location.pathname === "/" ? setHome(true) : setHome(false);
+  });
 
-	// check the url path, if '/' opaque false if '/*' opaque trye
+  // check the url path, if '/' opaque false if '/*' opaque trye
 
-	return (
-		<>
-			<Nav opaque={true} />
-			{/* <TechProjects /> */}
-			<Switch>
-				<Route exact path="/">
-					<Home />
-				</Route>
-				<Route path="/tech_projects">
-					<TechProjects />
-				</Route>
-				<Route path="/resume">
-					<Resume></Resume>
-				</Route>
-				<Route path="/photography">{/* <Photography /> */}</Route>
-			</Switch>
-		</>
-	);
+  return (
+    <>
+      <Nav home={home} />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/tech_projects">
+          <TechProjects />
+        </Route>
+        <Route path="/resume">
+          <Resume></Resume>
+        </Route>
+        <Route path="/photography">{/* <Photography /> */}</Route>
+      </Switch>
+    </>
+  );
 }
 
 export default withRouter(App);
