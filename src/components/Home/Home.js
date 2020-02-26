@@ -6,7 +6,7 @@ export const Home = () => {
     <div>
       <img
         className="home"
-        src="home3.jpg"
+        src="home3.JPG"
         // width="100vw"
         // height="100vh"
         alt="bird flying solo over golden gate bridge"
