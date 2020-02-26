@@ -9,7 +9,7 @@ export const Home = () => {
         src="home3.JPG"
         // width="100vw"
         // height="100vh"
-        alt="bird flying solo over golden gate bridge"
+        alt="colorful sunset with hill and trees on the foreground"
       ></img>
     </div>
   );
