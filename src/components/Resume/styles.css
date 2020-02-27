@@ -1,7 +1,11 @@
 .resume {
-	width: 100%;
-	height: 100vh;
-	background-size: cover;
-	position: relative;
-	z-index: 1;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.resume-link-container {
+  padding: 8vh 50px 25px 50px;
 }

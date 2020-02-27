@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import resume from "resume.pdf";
 
 import "./styles.css";
 
 export const Nav = ({ home }) => {
-  console.log(home);
   return (
     <nav
       style={
@@ -22,9 +22,17 @@ export const Nav = ({ home }) => {
         >
           <li color="inherit">Tech Projects</li>
         </Link>
-        <Link id={"nav__resume-link"} className={"nav__link"} to="/resume">
-          <li color="inherit">Resume</li>
-        </Link>
+        {/* <Link id={"nav__resume-link"} className={"nav__link"} to="/resume"> */}
+        <a
+          className="nav__link"
+          color="inherit"
+          href="resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Resume
+        </a>
+        {/* </Link> */}
         <Link
           id={"nav__photography-link"}
           className={"nav__link"}

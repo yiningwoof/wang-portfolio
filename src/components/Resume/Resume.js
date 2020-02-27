@@ -1,13 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
+import resume from "./resume.pdf";
+import "./styles.css";
 
 export const Resume = () => {
+  console.log(resume);
   return (
-    // <div style={{ width: '100vw', height: '100vh', backgroundColor: '#0009' }}>
-    // 	{/* <Document className="resume" file={test}></Document> */}
-
-    // 	{/* <PDFViewer src={resume}></PDFViewer> */}
-    // 	<embed type="application/pdf” src=“./resume.pdf”/>
-    // </div>
-    <div></div>
+    <div className="resume-link-container">
+      <a
+        href={resume}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ margin: "8vh 50px 25px 50px" }}
+      >
+        Download Resume
+      </a>
+    </div>
   );
 };
