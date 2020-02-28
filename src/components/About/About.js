@@ -22,13 +22,40 @@ export const About = () => {
         and video games.
       </p>
       <a
+        className="link"
         href={resume}
         target="_blank"
         rel="noopener noreferrer"
-        style={{ margin: "8vh 50px 25px 50px" }}
+        // style={{ margin: "8vh 50px 25px 50px" }}
       >
         Resume
       </a>
+      <a className="link" href="mailto: yining.wang@utexas.edu">
+        yining.wang@utexas.edu
+      </a>
+      <div className="logo-container">
+        <a
+          href="https://medium.com/@daphnewang0826"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img className="logo" src="medium.png" alt="github logo"></img>
+        </a>
+        <a
+          href="https://github.com/yiningwoof"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img className="logo" src="github.png" alt="github logo"></img>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/yining-wang-9b8391114/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img className="logo" src="linkedin.png" alt="github logo"></img>
+        </a>
+      </div>
     </div>
   );
 };
