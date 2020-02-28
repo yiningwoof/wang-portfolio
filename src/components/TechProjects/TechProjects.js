@@ -62,7 +62,7 @@ const projects = {
 export const TechProjects = () => {
   return (
     <div className="apps-container">
-      <h2>Hover on the picture to see a video demo!</h2>
+      <h2 className="instruction">Hover on a picture to see its video demo!</h2>
       {Object.values(projects).map((project, i) => (
         <TechProjectCard key={i} {...project} />
       ))}

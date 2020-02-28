@@ -9,7 +9,7 @@ export const Nav = ({ home }) => {
   return (
     <nav
       style={
-        !home ? { backgroundColor: "#0009" } : { backgroundColor: "#0000" }
+        !home ? { backgroundColor: "#0006" } : { backgroundColor: "#0000" }
       }
     >
       <ul>

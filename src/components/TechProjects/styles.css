@@ -2,3 +2,7 @@
 .apps-container {
   padding: 8vh 50px 25px 50px;
 }
+
+.instruction {
+  text-align: center;
+}
