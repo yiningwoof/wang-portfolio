@@ -35,13 +35,13 @@ export const Nav = ({ home }) => {
         >
           <li color="inherit">Tech Projects</li>
         </Link>
-        <Link
+        {/* <Link
           id={"nav__photography-link"}
           className={"nav__link"}
           to="/photography"
         >
           <li color="inherit">Photography</li>
-        </Link>
+        </Link> */}
       </ul>
     </nav>
   );
