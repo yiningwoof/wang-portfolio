@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { TechProjects } from "./components/TechProjects/TechProjects";
 import { Home } from "./components/Home/Home";
-import { Resume } from "./components/Resume/Resume";
+import { About } from "./components/About/About";
 
 import "./App.css";
 
@@ -28,8 +28,8 @@ function App() {
         <Route path="/tech_projects">
           <TechProjects />
         </Route>
-        <Route path="/resume">
-          <Resume></Resume>
+        <Route path="/about">
+          <About></About>
         </Route>
         <Route path="/photography">{/* <Photography /> */}</Route>
       </Switch>
