@@ -3,6 +3,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import { TechProjects } from "./components/TechProjects/TechProjects";
 import { Home } from "./components/Home/Home";
 import { About } from "./components/About/About";
+import { Photography } from "./components/Photography/Photography";
 
 import "./App.css";
 
@@ -31,7 +32,9 @@ function App() {
         <Route path="/about">
           <About></About>
         </Route>
-        <Route path="/photography">{/* <Photography /> */}</Route>
+        <Route path="/photography">
+          <Photography></Photography>
+        </Route>
       </Switch>
     </>
   );

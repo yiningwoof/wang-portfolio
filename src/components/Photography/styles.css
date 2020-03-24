@@ -1,3 +1,36 @@
-.gallery-grid {
-  margin: 30px 0 0 0;
+.gallery {
+  padding: 8vh 50px 25px 50px;
+  text-align: center;
+}
+
+.gallery-nav ul {
+  list-style: none;
+  /* margin-right: 10px; */
+}
+
+.gallery-nav ul li {
+  display: inline-block;
+  padding: 1vw;
+}
+
+.category-button {
+  /* width: 12.5%; */
+  display: block;
+  /* width: 115px; */
+  /* height: 25px; */
+
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  /* font-weight: bold; */
+}
+
+.category-button:hover {
+  transition: 0.5s;
+  background-color: #f9e79f;
+}
+
+.active {
+  background-color: #f9e79f;
 }
