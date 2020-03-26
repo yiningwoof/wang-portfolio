@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { render } from "@testing-library/react";
 import axios from "axios";
 
+import { Modal } from "../Modal/Modal.js";
+
 import "./styles.css";
 
 export const Photography = () => {
@@ -20,6 +22,7 @@ export const Photography = () => {
   const [category, setCategory] = useState("");
   const [initial, setInitial] = useState(true);
   const [photos, setPhotos] = useState([]);
+  const [inspectedPhoto, setInspectedPhoto] = useState("");
 
   const categories = {
     Home: "home",
@@ -38,6 +41,10 @@ export const Photography = () => {
       .get(`${baseAPIUrl}${categories[cat]}`)
       .then(res => res.data)
       .then(data => setPhotos(data));
+  };
+
+  const inspectPhoto = url => {
+    setInspectedPhoto(url);
   };
 
   useEffect(() => {
@@ -70,51 +77,31 @@ export const Photography = () => {
           ))}
         </ul>
       </div>
-      {/* <div className="gallery-grid"> */}
+      <Modal></Modal>
       <div className="grid-cols-3">
-        {/* <div className="grid-sizer"></div>
         {photos.map(photo => {
-          let url = `https://s3.us-east-2.amazonaws.com/yiningwang.io/${photo.filename}`;
-          let styles = {
-            backgroundImage: `url(${url})`,
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            position: "absolute",
-            left: "0%",
-            top: "0px"
-          };
+          let photoUrl = `url(${`https://s3.us-east-2.amazonaws.com/yiningwang.io/${photo.filename}`})`;
           return (
-            <div
-              className="gallery-item"
-              style={styles}
-              // style="background: url() center center no-repeat; position: absolute; left: 0%; top: 0px"
-            >
-              <img src={url} alt={photo.title}></img>
+            <div>
+              {/* <div
+                className="grid-item"
+                style={{
+                  width: "100%",
+                  height: "300px",
+                  // margin: "0.5vw",
+                  border: "solid 4px white",
+                  paddingBottom: "100%",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                  backgroundImage: `${photoUrl}`
+                }}
+                onClick={() => inspectPhoto(photoUrl)}
+              /> */}
             </div>
           );
-        })} */}
-        {/* <div className="grid-sizer"></div> */}
-        {photos.map(photo => (
-          <div
-            style={{
-              width: "100%",
-              height: "300px",
-              // margin: "0.5vw",
-              border: "solid 4px white",
-              paddingBottom: "100%",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-              backgroundImage: `url(${`https://s3.us-east-2.amazonaws.com/yiningwang.io/${photo.filename}`})`
-            }}
-          />
-        ))}
+        })}
       </div>
     </div>
-
-    // <img
-    //   src="https://s3.us-east-2.amazonaws.com/yiningwang.io/seattle2.jpg"
-    //   alt="toronto"
-    // ></img>
   );
 };
