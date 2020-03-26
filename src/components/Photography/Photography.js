@@ -70,8 +70,9 @@ export const Photography = () => {
           ))}
         </ul>
       </div>
-      <div className="gallery-grid">
-        <div className="grid-sizer"></div>
+      {/* <div className="gallery-grid"> */}
+      <div className="grid-cols-3">
+        {/* <div className="grid-sizer"></div>
         {photos.map(photo => {
           let url = `https://s3.us-east-2.amazonaws.com/yiningwang.io/${photo.filename}`;
           let styles = {
@@ -86,12 +87,28 @@ export const Photography = () => {
             <div
               className="gallery-item"
               style={styles}
-              // style="background: url(`) center center no-repeat; position: absolute; left: 0%; top: 0px"
+              // style="background: url() center center no-repeat; position: absolute; left: 0%; top: 0px"
             >
-              {/* <img src={url} alt={photo.title}></img> */}
+              <img src={url} alt={photo.title}></img>
             </div>
           );
-        })}
+        })} */}
+        {/* <div className="grid-sizer"></div> */}
+        {photos.map(photo => (
+          <div
+            style={{
+              width: "100%",
+              height: "300px",
+              // margin: "0.5vw",
+              border: "solid 4px white",
+              paddingBottom: "100%",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundImage: `url(${`https://s3.us-east-2.amazonaws.com/yiningwang.io/${photo.filename}`})`
+            }}
+          />
+        ))}
       </div>
     </div>
 
