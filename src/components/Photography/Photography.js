@@ -19,23 +19,35 @@ export const Photography = () => {
 
   const [category, setCategory] = useState("");
   const [initial, setInitial] = useState(true);
+  const [photos, setPhotos] = useState([]);
 
-  const categories = [
-    "Home",
-    "Animals",
-    "Plants",
-    "Civilization",
-    "Lights",
-    "Man vs. Wild",
-    "Mountains",
-    "Homed"
-  ];
+  const categories = {
+    Home: "home",
+    Animals: "animals",
+    Plants: "plants",
+    Civilization: "civilization",
+    Lights: "lights",
+    "Man vs. Wild": "man_wild",
+    Mountains: "mountains",
+    Homed: "homed"
+  };
+
+  const chooseCategory = cat => {
+    setCategory(cat);
+    axios
+      .get(`${baseAPIUrl}${categories[cat]}`)
+      .then(res => res.data)
+      .then(data => setPhotos(data));
+  };
 
   useEffect(() => {
     axios
       .get(`${baseAPIUrl}home`)
       .then(res => res.data)
-      .then(data => setCategory("Home"));
+      .then(data => {
+        setPhotos(data);
+        setCategory("Home");
+      });
   }, []);
 
   return (
@@ -44,13 +56,13 @@ export const Photography = () => {
       <div className="gallery-nav">
         <h2>Categories</h2>
         <ul>
-          {categories.map(cat => (
+          {Object.keys(categories).map(cat => (
             <li>
               <a
                 className={`category-button${
                   category === cat ? " active" : ""
                 }`}
-                onClick={() => setCategory(cat)}
+                onClick={() => chooseCategory(cat)}
               >
                 {cat}
               </a>
@@ -58,7 +70,29 @@ export const Photography = () => {
           ))}
         </ul>
       </div>
-      <div className="gallery-grid"></div>
+      <div className="gallery-grid">
+        <div className="grid-sizer"></div>
+        {photos.map(photo => {
+          let url = `https://s3.us-east-2.amazonaws.com/yiningwang.io/${photo.filename}`;
+          let styles = {
+            backgroundImage: `url(${url})`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            position: "absolute",
+            left: "0%",
+            top: "0px"
+          };
+          return (
+            <div
+              className="gallery-item"
+              style={styles}
+              // style="background: url(`) center center no-repeat; position: absolute; left: 0%; top: 0px"
+            >
+              {/* <img src={url} alt={photo.title}></img> */}
+            </div>
+          );
+        })}
+      </div>
     </div>
 
     // <img
