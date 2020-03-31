@@ -1,6 +1,7 @@
 .gallery {
   padding: 8vh 50px 25px 50px;
   text-align: center;
+  height: 100vh;
 }
 
 .gallery-nav ul {

@@ -8,8 +8,7 @@
   transform: scale(1);
   opacity: 1;
   visibility: visible; */
-  border: 4px solid white;
-  width: 50%;
+  width: 60%;
   /* &.off {
     opacity: 0;
     visibility: hidden;
@@ -20,17 +19,34 @@
 }
 
 .modal img {
+  border: 4px solid white;
   width: 100%;
 }
 
 .modal-container {
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.caption {
+  display: inline-block;
+}
+
+.title {
+  color: white;
+  text-align: left;
+  display: inline-block;
+}
+
+.location {
+  color: white;
+  text-align: right;
+  display: inline-block;
 }

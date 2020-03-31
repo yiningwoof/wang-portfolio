@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./styles.css";
 
-export const Modal = () => {
+export const Modal = ({ display, inspectedPhoto, photoUrl, close }) => {
+  const [modalDisplay, setModalDisplay] = useState(false);
+
+  useEffect(() => {
+    setModalDisplay(display);
+  });
+
+  //   const closeModal = () => {
+  //     setModalDisplay(false);
+  //   };
   return (
-    <div className="modal-container">
+    <div
+      className="modal-container"
+      style={{ display: modalDisplay ? "flex" : "none" }}
+      onClick={() => close()}
+    >
       <div className="modal">
-        <img
-          src="https://s3.us-east-2.amazonaws.com/yiningwang.io/arizona.jpg"
-          alt="sample"
-        ></img>
+        {console.log(inspectedPhoto.url)}
+        <img src={photoUrl} alt={inspectedPhoto.title}></img>
+        <div className="caption">
+          <p className="title">{inspectedPhoto.title}</p>
+          <p className="location">{inspectedPhoto.location}</p>
+        </div>
       </div>
     </div>
   );

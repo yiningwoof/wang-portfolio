@@ -22,7 +22,9 @@ export const Photography = () => {
   const [category, setCategory] = useState("");
   const [initial, setInitial] = useState(true);
   const [photos, setPhotos] = useState([]);
-  const [inspectedPhoto, setInspectedPhoto] = useState("");
+  const [inspectedPhoto, setInspectedPhoto] = useState({});
+  const [inspectedPhotoUrl, setInspectedPhotoUrl] = useState("");
+  const [allowScroll, setAllowScroll] = useState(true);
 
   const categories = {
     Home: "home",
@@ -43,8 +45,16 @@ export const Photography = () => {
       .then(data => setPhotos(data));
   };
 
-  const inspectPhoto = url => {
-    setInspectedPhoto(url);
+  const inspectPhoto = (photo, photoUrl) => {
+    setInspectedPhoto(photo);
+    setInspectedPhotoUrl(photoUrl);
+    setAllowScroll(false);
+  };
+
+  const closeModal = () => {
+    setInspectedPhoto({});
+    setInspectedPhotoUrl("");
+    setAllowScroll(true);
   };
 
   useEffect(() => {
@@ -58,7 +68,12 @@ export const Photography = () => {
   }, []);
 
   return (
-    <div className="gallery">
+    <div
+      className="gallery"
+      style={{
+        overflow: allowScroll ? "auto" : "hidden"
+      }}
+    >
       {console.log(category)}
       <div className="gallery-nav">
         <h2>Categories</h2>
@@ -77,13 +92,13 @@ export const Photography = () => {
           ))}
         </ul>
       </div>
-      <Modal></Modal>
       <div className="grid-cols-3">
         {photos.map(photo => {
-          let photoUrl = `url(${`https://s3.us-east-2.amazonaws.com/yiningwang.io/${photo.filename}`})`;
+          let photoUrlStyle = `url(${`https://s3.us-east-2.amazonaws.com/yiningwang.io/${photo.filename}`})`;
+          let photoUrl = `https://s3.us-east-2.amazonaws.com/yiningwang.io/${photo.filename}`;
           return (
             <div>
-              {/* <div
+              <div
                 className="grid-item"
                 style={{
                   width: "100%",
@@ -94,14 +109,20 @@ export const Photography = () => {
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
-                  backgroundImage: `${photoUrl}`
+                  backgroundImage: `${photoUrlStyle}`
                 }}
-                onClick={() => inspectPhoto(photoUrl)}
-              /> */}
+                onClick={() => inspectPhoto(photo, photoUrl)}
+              />
             </div>
           );
         })}
       </div>
+      <Modal
+        display={Object.keys(inspectedPhoto).length === 0 ? false : true}
+        inspectedPhoto={inspectedPhoto}
+        photoUrl={inspectedPhotoUrl}
+        close={closeModal}
+      ></Modal>
     </div>
   );
 };
